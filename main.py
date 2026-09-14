@@ -1,7 +1,9 @@
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
+from utils import assign_weights
 from utils.neuron_mapping import map_neurons
 
 
@@ -22,7 +24,8 @@ def main():
         f"{len(mapped['edges']):,} edges, and "
         f"{len(mapped['viz_neurons2d_x']):,} visual input neurons."
     )
-    return mapped
+
+    assign_weights(mapped['neurons'], mapped['edges'], np.random.default_rng())
 
 if __name__ == "__main__":
     main()
