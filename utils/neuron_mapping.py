@@ -17,8 +17,10 @@ def map_neurons(neurons, edges):
         ["bodyId", "instance", "assignedOlHex1", "assignedOlHex2"],
     ]
 
-    viz_neurons2d_x = viz_neurons["assignedOlHex2"] - viz_neurons["assignedOlHex1"]
-    viz_neurons2d_y = (
+    viz_neurons = viz_neurons.copy()
+    viz_neurons.index.name = "network_index"
+    viz_neurons["x"] = viz_neurons["assignedOlHex2"] - viz_neurons["assignedOlHex1"]
+    viz_neurons["y"] = (
         viz_neurons["assignedOlHex1"] + viz_neurons["assignedOlHex2"]
     ) / np.sqrt(3)
 
@@ -27,7 +29,6 @@ def map_neurons(neurons, edges):
     return {
         "neurons": neurons,
         "edges": edges,
-        "viz_neurons2d_x": viz_neurons2d_x,
-        "viz_neurons2d_y": viz_neurons2d_y,
+        "viz_neurons": viz_neurons,
         "identity_map": id_to_index,
     }

@@ -22,7 +22,7 @@ def main():
     print(
         f"Mapped {len(mapped['neurons']):,} neurons, "
         f"{len(mapped['edges']):,} edges, and "
-        f"{len(mapped['viz_neurons2d_x']):,} visual input neurons."
+        f"{len(mapped['viz_neurons']):,} visual input neurons."
     )
 
     assign_weights(mapped['neurons'], mapped['edges'], np.random.default_rng())
